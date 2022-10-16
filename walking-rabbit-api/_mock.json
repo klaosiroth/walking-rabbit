@@ -1,0 +1,139 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Coffee"
+    },
+    {
+      "id": 2,
+      "name": "Tea"
+    },
+    {
+      "id": 3,
+      "name": "Soft drink"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Espresso",
+      "price": 25,
+      "duration": 35,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Americano",
+      "price": 30,
+      "duration": 40,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "Latte",
+      "price": 35,
+      "duration": 45,
+      "categoryId": 1
+    },
+    {
+      "id": 4,
+      "name": "Taiwan tea",
+      "price": 35,
+      "duration": 35,
+      "categoryId": 2
+    },
+    {
+      "id": 5,
+      "name": "Thai tea",
+      "price": 25,
+      "duration": 35,
+      "categoryId": 2
+    },
+    {
+      "id": 6,
+      "name": "Soda",
+      "price": 15,
+      "duration": 30,
+      "categoryId": 3
+    },
+    {
+      "id": 7,
+      "name": "Cola",
+      "price": 15,
+      "duration": 30,
+      "categoryId": 3
+    },
+    {
+      "id": 8,
+      "name": "Energy drink",
+      "price": 20,
+      "duration": 30,
+      "categoryId": 3
+    }
+  ],
+  "attributeTypes": [
+    {
+      "id": 1,
+      "name": "Type"
+    },
+    {
+      "id": 2,
+      "name": "Sweetness"
+    },
+    {
+      "id": 3,
+      "name": "Option"
+    }
+  ],
+  "attributes": [
+    {
+      "id": 1,
+      "name": "Hot",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Cold",
+      "price": 5,
+      "duration": 5,
+      "attributeTypeId": 1
+    },
+    {
+      "id": 3,
+      "name": "Less sugar",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 2
+    },
+    {
+      "id": 4,
+      "name": "Default",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 2
+    },
+    {
+      "id": 5,
+      "name": "More sugar",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 2
+    },
+    {
+      "id": 6,
+      "name": "Straw",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 3
+    },
+    {
+      "id": 7,
+      "name": "Cup cover",
+      "price": 0,
+      "duration": 0,
+      "attributeTypeId": 3
+    }
+  ]
+}
