@@ -33,7 +33,7 @@ const Attribute = sequelize.define('Attribute', {
 });
 
 Category.hasMany(Product, { foreignKey: 'categoryId', as: 'products' });
-Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'products' });
+Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'category' });
 AttributeType.hasMany(Attribute, { foreignKey: 'attributeTypeId', as: 'attributes' });
 Attribute.belongsTo(AttributeType, { foreignKey: 'attributeTypeId', as: 'attributes' });
 
@@ -53,7 +53,40 @@ app.get('/api/categories', async (req, res) => {
 });
 
 app.get('/api/products', async (req, res) => {
-  const products = await Product.findAll();
+  // const products = await Product.findAll();
+  const products = await Product.findAll({
+    include: [
+      {
+        model: Category,
+        as: 'category',
+        // attributes: [], // attributes here are nested under "Name"
+        attributes: ['name'],
+        required: false,
+      },
+    ],
+    attributes: [
+      ['id', 'productId'], // rename column
+      ['name', 'productName'], // rename column
+      'price',
+    ],
+    // attributes: {
+    //   include: [[Sequelize.col('category'), 'category']], // NOT nested
+    //   exclude: ['categoryId'],
+    // },
+
+    raw: true,
+  });
+
+  const [results, metadata] = await sequelize.query(
+    `SELECT product.id, product.name, product.price, product.duration, category.name AS category
+    FROM products AS product
+    LEFT OUTER JOIN categories AS category ON product.category_id = category.id`
+  );
+
+  console.log('metadata', metadata);
+
+  console.log(JSON.stringify(results, null, 2));
+
   res.json(products);
 });
 
