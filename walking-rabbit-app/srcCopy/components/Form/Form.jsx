@@ -1,34 +1,32 @@
-import { useCallback, useEffect, useState, useMemo } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PRODUCT_OPTIONS, ATTRIBUTETYPES_OPTIONS, ATTRIBUTES_OPTIONS } from 'src/_mock';
 import axios from 'src/utils/axios';
+import CountdownTimer from '../CountdownTimer';
 
 import './Form.css';
 
 const getFormattedPrice = (price) => `${price.toFixed(2)}฿`;
 
-function Form({ product: currentProduct }) {
-  console.log('product', currentProduct);
+function Form({ product }) {
+  console.log('product', product);
   const navigate = useNavigate();
 
-  const defaultValues = useMemo(
-    () => ({
-      productName: currentProduct?.name,
-      categoryName: currentProduct?.category || null,
-      totalPrice: currentProduct?.price || 0,
-      types: 'Hot',
-      sweetness: 'Default',
-      isStraw: false,
-      isCupCover: false,
-    }),
-    [currentProduct]
-  );
+  const defaultValues = {
+    productName: product?.name,
+    categoryName: product?.category,
+    totalPrice: product?.price,
+    type: 'Hot',
+    sweetness: 'Default',
+    isStraw: false,
+    isCupCover: false,
+  };
 
   const [formData, setFormData] = useState(defaultValues);
   const [attributeTypes, setAttributeTypes] = useState([]);
   const [attributes, setAttributes] = useState([]);
   const [selectedAttributes, setSelectedAttributes] = useState([]);
-  const [duration, setDuration] = useState(currentProduct.duration);
+  const [duration, setDuration] = useState(product.duration);
   const [total, setTotal] = useState(formData.totalPrice);
   const [payment, setPayment] = useState('');
   const [counter, setCounter] = useState(-1);
@@ -64,6 +62,49 @@ function Form({ product: currentProduct }) {
   console.log('attributes', attributes);
   console.log('attributeTypes', attributeTypes);
 
+  // attributeTypes.forEach(({ attributes }) => {
+  //   for (const iterator of attributes) {
+  //     totalPrice += Number(iterator.price);
+  //   }
+  // });
+
+  // const test = attributeTypes.map(({ attributes }) => {
+  //   let totalPrice = 0;
+  //   for (let i = 0; i < attributes.length; i++) {
+  //     totalPrice += Number(attributes[i].price);
+  //   }
+  //   console.log('totalPrice', totalPrice);
+  // });
+
+  // console.log('test', test);
+
+  // const totalPrice = product.price + 5;
+
+  // const calculateTotalPrice = (first) => {
+  //   console.log('first', first);
+  //   // const totalPrice = product.reduce((total, item) => {
+  //   //   return total + item.quantity;
+  //   // }, 0);
+  //   // setTotalPrice(totalPrice);
+  // };
+
+  // console.log('calculateTotalPrice', totalPrice);
+  // console.log('attributes', attributes);
+  // console.log('attributes.attributeType ', attributes.attributeType === 'Type');
+
+  // const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   console.log('useEffect runs!');
+  //   const interval = setInterval(() => {
+  //     setCount((count) => count + 1);
+  //   }, 1000);
+  //   return () => {
+  //     //
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+
   const handleChange = useCallback((event, option, index) => {
     const { name, value, type, checked } = event.target;
     const { id, price, duration } = option;
@@ -74,7 +115,7 @@ function Form({ product: currentProduct }) {
     const selectedOption = attributes.filter(({ id }) => selectedAttr.includes(id));
 
     const totalPrice = formData.totalPrice + Number(price);
-    const totalDuration = currentProduct.duration + Number(duration);
+    const totalDuration = product.duration + Number(duration);
 
     console.log('selectedOption', selectedOption);
     console.log('formData1', formData.totalPrice);
@@ -107,10 +148,6 @@ function Form({ product: currentProduct }) {
       await new Promise((resolve) => setTimeout(resolve, 500));
       // await axios.post('API', formData);
       // alert(`Wait 5 seconds for the product...`);
-      if (payment <= total) {
-        alert(`Wait 5 seconds for the product...`);
-        return;
-      }
       setFormData(defaultValues);
       setCounter(duration);
       console.log(JSON.stringify(formData, null, 2));
@@ -185,6 +222,7 @@ function Form({ product: currentProduct }) {
             <span>Preparing drinks....{counter}</span>
           </h3>
         )}
+        {/* <CountdownTimer seconds={duration} /> */}
       </section>
     </>
   );

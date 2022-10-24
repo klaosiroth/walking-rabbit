@@ -1,0 +1,68 @@
+const _products = [
+  {
+    id: 1,
+    name: 'Espresso',
+    price: '25.00',
+    duration: 35,
+    availableAttribute: [1, 2, 3, 4, 5, 6, 7],
+    categoryId: 1,
+  },
+  {
+    id: 2,
+    name: 'Americano',
+    price: '30.00',
+    duration: 40,
+    availableAttribute: [1, 2, 3, 4, 5, 6, 7],
+    categoryId: 1,
+  },
+  {
+    id: 3,
+    name: 'Latte',
+    price: '35.00',
+    duration: 45,
+    availableAttribute: [1, 2, 3, 4, 5, 6, 7],
+    categoryId: 1,
+  },
+  {
+    id: 4,
+    name: 'Taiwan tea',
+    price: '35.00',
+    duration: 35,
+    availableAttribute: [1, 2, 3, 4, 5, 6, 7],
+    categoryId: 2,
+  },
+  {
+    id: 5,
+    name: 'Thai tea',
+    price: '25.00',
+    duration: 35,
+    availableAttribute: [1, 2, 3, 4, 5, 6, 7],
+    categoryId: 2,
+  },
+  {
+    id: 6,
+    name: 'Soda',
+    price: '15.00',
+    duration: 30,
+    availableAttribute: [6, 7],
+    categoryId: 3,
+  },
+  {
+    id: 7,
+    name: 'Cola',
+    price: '15.00',
+    duration: 30,
+    availableAttribute: [6, 7],
+    categoryId: 3,
+  },
+  {
+    id: 8,
+    name: 'Energy drink',
+    price: '20.00',
+    duration: 30,
+    availableAttribute: [6, 7],
+    categoryId: 3,
+  },
+];
+
+export default _products;

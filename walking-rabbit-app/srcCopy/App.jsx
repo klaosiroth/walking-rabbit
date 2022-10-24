@@ -12,6 +12,7 @@ import axios from './utils/axios';
 import Layout from './layouts/Layout';
 import Products from './components/Products';
 import Product from './components/Product';
+import NoMatch from './components/NoMatch';
 
 export default function App() {
   console.count('Component rendered!');
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Products products={products} />} />
           <Route path="/:productId" element={<Product />} />
+          <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
     </>

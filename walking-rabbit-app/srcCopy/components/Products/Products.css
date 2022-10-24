@@ -1,0 +1,33 @@
+.ProductFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin: 24px 0;
+}
+
+.ProductFilter li {
+  padding: 8px 16px;
+  min-width: 120px;
+  background: #fafafa;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+}
+
+.ProductFilter li:not(:first-of-type) {
+  margin-left: 16px;
+}
+
+.Products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.Product__card {
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+}

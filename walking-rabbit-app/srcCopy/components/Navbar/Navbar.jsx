@@ -6,8 +6,13 @@ const Navbar = () => {
     <nav className="Navbar">
       <div className="container">
         <div className="Navbar__logo">
-          <Link to="/">Walking Rabbit</Link>
+          <Link to="/">React</Link>
         </div>
+        <ul className="Navbar__nav">
+          <li>
+            <Link to="/nothing-here">Nothing Here</Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
